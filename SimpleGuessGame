@@ -1,0 +1,69 @@
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+    //random seed
+    srand(time(0));
+
+    //variables
+    int a, b, sum, csum, guess;
+    string answ;
+
+    //generate two RANDOM numbers between 5-20
+    while(true){
+    a = 5 +(rand() % 16); //16 because 20-5 +1 = 16
+    b = 5 +(rand() % 16);
+    csum = a + b ;
+    guess=0; //counter for guesses
+
+    //ask user for hte sum of the two numbers
+    cout << "What is the sum of " << a << " and " << b <<"? : ";
+
+    while (true) 
+    {
+        cin >> sum;
+        //keep track of the # of guesses it takes them and how many times they play
+        guess ++;
+ 
+
+    //let them keep "guessing" til they get it right
+    if (sum == csum)
+    {
+        //after user gets answer right congradulate them and ask if they want another
+        cout << "Correct!" << " You guessed in " << guess << " attempts!";
+        cout << "Would you like another question?: ";
+        cin >> answ;
+
+        if ( tolower(answ[0]) == 'y' )
+        {
+        cout << "Awesome, lets continue. ";
+        break; //exit guess loop to generate new
+        }
+        //keep repeating the game until they say no
+        else if ( tolower (answ[0]) == 'n' )
+        {
+            cout << "Farewell.";
+            return 0; //exit program
+        }
+
+        else 
+        {
+            cout << " Cool, lets keep going! ";
+            break;//keep going
+        }
+    }
+    
+    else
+    {
+        cout << "You need some work, try again: ";
+    }
+    }
+    }
+    cout << endl << endl;
+    system ("pause");
+    return 1;}
